@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <style>
+
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body ka design */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+        }
+
+        /* Calculator ka main box */
+        .calculator {
+            background: #222;
+            padding: 25px;
+            border-radius: 25px;
+
+            width: 350px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Calculator ka title */
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Display screen */
+        #display {
+            width: 100%;
+            height: 70px;
+
+            border: none;
+            border-radius: 12px;
+
+            padding: 10px;
+            margin-bottom: 20px;
+
+            background: #f1f1f1;
+            color: #222;
+
+            font-size: 30px;
+            text-align: right;
+        }
+
+        /* Buttons ka grid layout */
+        .buttons {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+        /* All buttons ka design */
+        button {
+            height: 60px;
+
+            border: none;
+            border-radius: 12px;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            background: #444;
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        /* Mouse button par le jane par */
+        button:hover {
+            background: #666;
+            transform: scale(1.03);
+        }
+
+        /* Button press effect */
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Operators ka color */
+        .operator {
+            background: #ff9500;
+        }
+
+        /* Clear button */
+        .clear {
+            background: #e63946;
+        }
+
+        /* Equal button */
+        .equal {
+            background: #28a745;
+        }
+
+        /* Footer text */
+        .footer {
+            color: #bbb;
+            text-align: center;
+
+            font-size: 12px;
+            margin-top: 18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Calculator ka main container -->
+    <div class="calculator">
+
+        <!-- Calculator ka title -->
+        <h2>My Calculator</h2>
+
+        <!-- Display screen -->
+        <input type="text" id="display" readonly>
+
+        <!-- Calculator buttons -->
+        <div class="buttons">
+
+            <!-- First row -->
+            <button onclick="clearDisplay()" class="clear">C</button>
+
+            <button onclick="deleteLast()">DEL</button>
+
+            <button onclick="appendValue('(')">(</button>
+
+            <button onclick="appendValue(')')">)</button>
+
+
+            <!-- Second row -->
+            <button onclick="appendValue('7')">7</button>
+
+            <button onclick="appendValue('8')">8</button>
+
+            <button onclick="appendValue('9')">9</button>
+
+            <button onclick="appendValue('/')" class="operator">÷</button>
+
+
+            <!-- Third row -->
+            <button onclick="appendValue('4')">4</button>
+
+            <button onclick="appendValue('5')">5</button>
+
+            <button onclick="appendValue('6')">6</button>
+
+            <button onclick="appendValue('*')" class="operator">×</button>
+
+
+            <!-- Fourth row -->
+            <button onclick="appendValue('1')">1</button>
+
+            <button onclick="appendValue('2')">2</button>
+
+            <button onclick="appendValue('3')">3</button>
+
+            <button onclick="appendValue('-')" class="operator">−</button>
+
+
+            <!-- Fifth row -->
+            <button onclick="appendValue('0')">0</button>
+
+            <button onclick="appendValue('.')">.</button>
+
+            <button onclick="calculate()" class="equal">=</button>
+
+            <button onclick="appendValue('+')" class="operator">+</button>
+
+        </div>
+
+        <!-- Footer -->
+        <p class="footer">Simple Calculator | HTML CSS JavaScript</p>
+
+    </div>
+
+
+    <!-- JavaScript code -->
+    <script>
+
+        // Display screen ko select karna
+        let display = document.getElementById("display");
+
+
+        // Number ya operator display par show karna
+        function appendValue(value) {
+
+            display.value += value;
+
+        }
+
+
+        // Display screen clear karna
+        function clearDisplay() {
+
+            display.value = "";
+
+        }
+
+
+        // Last character delete karna
+        function deleteLast() {
+
+            display.value = display.value.slice(0, -1);
+
+        }
+
+
+        // Calculation karna
+        function calculate() {
+
+            try {
+
+                // Display se expression lena
+                let expression = display.value;
+
+                // Agar display empty hai to kuch na karo
+                if (expression.trim() === "") {
+
+                    return;
+                }
+                // Sirf numbers aur operators allow karna
+                if (!/^[0-9+\-*/().\s]+$/.test(expression)) {
+
+                    display.value = "Error";
+
+                    return;
+
+                }
+
+                // Expression ka result calculate karna
+                let result = Function(
+                    '"use strict"; return (' + expression + ')'
+                )();
+                // Agar result valid nahi hai
+                if (!Number.isFinite(result)) {
+                    display.value = "Error";
+                    return;
+                }
+                // Result display par show karna
+                display.value = result;
+            }
+            catch (error) {
+                // Agar calculation mein error aaye
+                display.value = "Error";
+            }
+        }
+        // Keyboard support
+        document.addEventListener("keydown", function(event) {
+            // Number aur operators keyboard se enter karna
+            if ("0123456789+-*/().".includes(event.key)) {
+                appendValue(event.key);
+            }
+            // Enter press karne par calculation
+            else if (event.key === "Enter") {
+                calculate();
+            }
+            // Escape press karne par clear
+            else if (event.key === "Escape") {
+
+                clearDisplay();
+            }
+            // Backspace se last character delete
+            else if (event.key === "Backspace") {
+
+                deleteLast();
+            }
+        });
+    </script>
+</body>
+
+</html>
