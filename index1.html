@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maham Arshad | My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f7ff;
+            color: #25234a;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #5b3cc4;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7652e8;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #4d2eb0;
+            transform: translateY(-3px);
+        }
+
+        /* ===== NAVBAR ===== */
+
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #7652e8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7652e8;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ===== HOME ===== */
+
+        #home {
+            background: linear-gradient(135deg, #eee9ff, #fce8f8);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .home-text {
+            flex: 1;
+        }
+
+        .home-text h3 {
+            color: #7652e8;
+            font-size: 22px;
+        }
+
+        .home-text h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .home-text h2 {
+            color: #7652e8;
+            margin-bottom: 15px;
+        }
+
+        .home-text p {
+            max-width: 500px;
+            margin-bottom: 25px;
+        }
+
+        .home-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* ===== PROFILE IMAGE CIRCLE ===== */
+
+        .profile-circle {
+            width: 320px;
+            height: 320px;
+            background: #dcd0ff;
+            border: 8px solid #b59cff;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 50%;
+        }
+
+        /* ===== ABOUT ===== */
+
+        #about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text,
+        .about-box {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-box {
+            background: #eee9ff;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .about-box p {
+            margin: 12px 0;
+        }
+
+        /* ===== SKILLS ===== */
+
+        #skills {
+            background: #f1edff;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(118,82,232,0.2);
+        }
+
+        .skill-card h3 {
+            color: #7652e8;
+            margin-bottom: 8px;
+        }
+
+        /* ===== PROJECTS ===== */
+
+        #projects {
+            background: white;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #f8f7ff;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2dafa;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-icon {
+            font-size: 45px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: #5b3cc4;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            color: #7652e8;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ===== RESUME ===== */
+
+        #resume {
+            background: #eee9ff;
+            text-align: center;
+        }
+
+        .resume-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .resume-box p {
+            margin-bottom: 25px;
+        }
+
+        /* ===== CONTACT ===== */
+
+        #contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            color: #7652e8;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        #form-message {
+            margin-top: 12px;
+            color: #5b3cc4;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #25234a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* ===== ANIMATION ===== */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 768px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .home-content,
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-text h1 {
+                font-size: 36px;
+            }
+
+            .skills-container,
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-circle {
+                width: 260px;
+                height: 260px;
+            }
+
+            .contact-info p {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Maham Arshad 💜</div>
+
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HOME ===== -->
+
+    <section id="home">
+        <div class="container">
+            <div class="home-content">
+
+                <div class="home-text fade-in">
+                    <h3>Assalamualaikum, I'm</h3>
+
+                    <h1>Maham 💜</h1>
+
+                    <h2>Software Engineering Student</h2>
+
+                    <p>
+                        Welcome to my personal portfolio!
+                        I am a passionate Software Engineering student
+                        interested in Web Development and Mobile App
+                        Development. I love learning new technologies
+                        and creating creative and user-friendly applications.
+                    </p>
+
+                    <a href="#projects" class="btn">
+                        View My Projects
+                    </a>
+                </div>
+
+                <div class="home-image fade-in">
+                    <div class="profile-circle">
+                        <img src="img1.jpeg" alt="Maham Profile Picture">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+
+    <section id="about">
+        <div class="container">
+
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-content">
+
+                <div class="about-text fade-in">
+                    <h3>Who Am I?</h3>
+
+                    <p>
+                        I'm Maham, a Software Engineering student
+                        who enjoys exploring technology and developing
+                        creative digital solutions.
+                    </p>
+
+                    <p>
+                        I am continuously improving my programming,
+                        web development, and problem-solving skills
+                        through academic projects and practical tasks.
+                    </p>
+                </div>
+
+                <div class="about-box fade-in">
+                    <h3>My Information</h3>
+
+                    <p>🎓 Degree: Software Engineering</p>
+
+                    <p>
+                        💻 Interests: Machine Learning,
+                        Web Development & Mobile Development
+                    </p>
+
+                    <p>📚 Current Semester: 6th Semester</p>
+
+                    <p>🚀 Goal: Become a Skilled Developer</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+
+    <section id="skills">
+        <div class="container">
+
+            <h2 class="section-title">My Skills</h2>
+
+            <div class="skills-container">
+
+                <div class="skill-card fade-in">
+                    <h3>HTML</h3>
+                    <p>Creating structured web pages.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>CSS</h3>
+                    <p>Designing attractive and responsive layouts.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>JavaScript</h3>
+                    <p>Adding interactivity to websites.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>C++</h3>
+                    <p>Object-oriented programming and DSA basics.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>Flutter</h3>
+                    <p>Learning mobile application development.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>Git & GitHub</h3>
+                    <p>Learning version control and project sharing.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+
+    <section id="projects">
+        <div class="container">
+
+            <h2 class="section-title">My Projects</h2>
+
+            <div class="projects-container">
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🧮</div>
+
+                    <h3>Basic Calculator</h3>
+
+                    <p>
+                        A calculator website with arithmetic operations,
+                        interactive buttons, and keyboard support.
+                    </p>
+
+                    <p class="project-tags">
+                        HTML | CSS | JavaScript
+                    </p>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">📱</div>
+
+                    <h3>Student Academic Details App</h3>
+
+                    <p>
+                        A Flutter application designed to manage
+                        and display student academic details.
+                    </p>
+
+                    <p class="project-tags">
+                        Flutter | Dart
+                    </p>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🤖</div>
+
+                    <h3>SkillBridge+</h3>
+
+                    <p>
+                        An AI-driven resume and job matching system
+                        designed to connect candidates with suitable
+                        job opportunities.
+                    </p>
+
+                    <p class="project-tags">
+                        AI | Web Development | Database
+                    </p>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🌦️</div>
+
+                    <h3>Weather System</h3>
+
+                    <p>
+                        A weather system project designed to display
+                        weather-related information through a
+                        user-friendly interface.
+                    </p>
+
+                    <p class="project-tags">
+                        Programming | UI Design
+                    </p>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🎮</div>
+
+                    <h3>Travel Town Hit</h3>
+
+                    <p>
+                        A game development project inspired by
+                        merge-style gameplay concepts.
+                    </p>
+
+                    <p class="project-tags">
+                        Unity | Game Development
+                    </p>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🌐</div>
+
+                    <h3>Portfolio Website</h3>
+
+                    <p>
+                        My personal portfolio website created to
+                        showcase my skills and projects.
+                    </p>
+
+                    <p class="project-tags">
+                        HTML | CSS | JavaScript
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESUME ===== -->
+
+    <section id="resume">
+        <div class="container">
+
+            <div class="resume-box fade-in">
+
+                <h2 class="section-title">My Resume</h2>
+
+                <p>
+                    Interested in learning more about my education,
+                    skills, and experience? You can download my resume
+                    using the button below.
+                </p>
+
+                <a href="resume.pdf" download class="btn">
+                    📄 Download Resume
+                </a>
+
+                <p style="font-size: 13px; margin-top: 15px;">
+                    Note: Place your resume PDF in the same folder
+                    as this HTML file.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+
+    <section id="contact">
+        <div class="container">
+
+            <h2 class="section-title">Contact Me</h2>
+
+            <div class="contact-content">
+
+                <div class="contact-info fade-in">
+
+                    <h3>Let's Connect! 💜</h3>
+
+                    <p>
+                        I am open to learning opportunities,
+                        collaborations, and exciting projects.
+                    </p>
+
+                    <p>📧 Email: Your email here</p>
+
+                    <p>🔗 LinkedIn: Add your profile link</p>
+
+                    <p>📍 Location: Pakistan</p>
+
+                </div>
+
+                <div class="contact-form fade-in">
+
+                    <form id="contactForm">
+
+                        <input type="text"
+                               id="name"
+                               placeholder="Your Name"
+                               required>
+
+                        <input type="email"
+                               id="email"
+                               placeholder="Your Email"
+                               required>
+
+                        <textarea id="message"
+                                  placeholder="Your Message"
+                                  required></textarea>
+
+                        <button type="submit" class="btn">
+                            Send Message
+                        </button>
+
+                        <p id="form-message"></p>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+        <p>Made with 💜 by Maham Arshad</p>
+    </footer>
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+        // Mobile menu
+        function toggleMenu() {
+            let navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+
+        // Menu link click hone par menu close hoga
+        document.querySelectorAll(".nav-links a").forEach(function(link) {
+            link.addEventListener("click", function() {
+                document.getElementById("navLinks").classList.remove("active");
+            });
+        });
+
+        // Scroll animation
+        const elements = document.querySelectorAll(".fade-in");
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        elements.forEach(function(element) {
+            observer.observe(element);
+        });
+
+        // Contact form
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("message").value.trim();
+
+            if (name === "" || email === "" || message === "") {
+                document.getElementById("form-message").textContent =
+                    "Please fill in all fields.";
+                return;
+            }
+
+            document.getElementById("form-message").textContent =
+                "Thank you! This is a demo form. Connect it to a backend to send messages.";
+
+            document.getElementById("contactForm").reset();
+        });
+
+    </script>
+
+</body>
+</html>
